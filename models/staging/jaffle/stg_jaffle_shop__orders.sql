@@ -1,7 +1,7 @@
 select
-        cast(id as string) as order_id,
-        customer as customer_id,
-        ordered_at as order_date,
-        order_total
+        id as order_id,
+        user_id as customer_id,
+        order_date,
+        status
 
 from {{ source('jaffle_shop_raw', 'raw_orders') }}
