@@ -1,6 +1,6 @@
 select
     id as payment_id,
-    cast(orderid as INT64) as order_id,
+    orderid as order_id,
     paymentmethod as payment_method,
     status,
 
