@@ -1,7 +1,11 @@
 select
-    id as order_id,
-    customer as customer_id,
-    order_total as amount
+    id as payment_id,
+    cast(orderid as INT64) as order_id,
+    paymentmethod as payment_method,
+    status,
 
-from 
-    jaffle_shop_raw.raw_orders
+    -- amount is stored in cents, convert to dollars
+    amount / 100 as amount,
+    created as created_at
+    
+from {{ source('jaffle_shop_raw', 'stripe_payments')}}
