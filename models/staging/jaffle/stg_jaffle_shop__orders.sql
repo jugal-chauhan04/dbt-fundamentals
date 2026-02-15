@@ -1,3 +1,5 @@
+with orders_cte as(
+
 select
         id as order_id,
         user_id as customer_id,
@@ -5,3 +7,6 @@ select
         status
 
 from {{ source('jaffle_shop_raw', 'raw_orders') }}
+)
+
+select * from orders_cte
